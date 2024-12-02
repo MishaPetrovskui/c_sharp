@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Threading
+using System.Threading;
 using Game;
 
 
@@ -14,26 +14,32 @@ class Proggram
     {
         Console.OutputEncoding = UTF8Encoding.UTF8;
         Console.InputEncoding = UTF8Encoding.UTF8;
-        Character player1 = new Character("ANTON", 1, 100, 10);
+        Character player1 = new Character("ANTON", 90, 15, 4);
         player1.print();
         Console.WriteLine("\n");
-        Character player2 = new Character("DIMON", 1, 10, 100);
+        Character player2 = new Character("DIMON", 90, 15, 4);
         player2.print();
 
         while (true)
         {
+            if (player1.attack(player2) <= 0) break;
+            if (player2.attack(player1) <= 0) break;
 
+
+            Thread.Sleep(3000);
         }
-
-        player1.attack(player2);
-        Console.WriteLine("\n");
-        player1.print();
-        Console.WriteLine("\n");
-        player2.print();
     }
 }
 
-// DRUGOE
+
+
+
+
+
+
+
+//drugoe
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,15 +71,23 @@ namespace Game
             Console.WriteLine($"Defence: {defence}");
         }
 
-        public int takeDamage(int damage )
+        public int takeDamage(int damage)
         {
             this.health = Math.Max(this.health - damage, 0);
             return this.health;
         }
 
-        public void attack(Character target)
+        public int attack(Character target)
         {
-            target.takeDamage(this.damage);
+            int dmg = target.takeDamage(this.damage);
+            Console.WriteLine($"{this.name} атакував {target.name} і наніс {this.damage} одиниць шкоди.\nУ {target.name} залишилося {target.health} здоров`я.");
+            if (dmg <= 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"{this.name} переміг {target.name}");
+                Console.ForegroundColor= ConsoleColor.Gray;
+            }
+            return dmg;
         }
     }
 }
