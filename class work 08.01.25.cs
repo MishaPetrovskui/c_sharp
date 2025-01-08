@@ -25,6 +25,7 @@ class Program
                 break;
             else if (choice == 1)
             {
+                Pizza pizza;
                 Console.WriteLine($"MENU:\n1) Vegeteriana\n2) Stagioni\n3) Frutti\n4) Romana\n");
                 int choiceMenuPizza = int.Parse(Console.ReadLine());
                 Console.WriteLine($"SIZE:\n1) Small\n2) Medium\n3) Large\n");
@@ -33,15 +34,15 @@ class Program
                 {
                     if (choiceMenuPizzasSize == 1)
                     {
-                        Pizza pizza = new Pizza("Vegeteriana", Size.Small, 149.0);
+                        pizza = new Pizza("Vegeteriana", Size.Small, 149.0);
                     }
                     else if (choiceMenuPizzasSize == 2)
                     {
-                        Pizza pizza = new Pizza("Vegeteriana", Size.Medium, 199.0);
+                        pizza = new Pizza("Vegeteriana", Size.Medium, 199.0);
                     }
                     else if (choiceMenuPizzasSize == 3)
                     {
-                        Pizza pizza = new Pizza("Vegeteriana", Size.Large, 249.0);
+                        pizza = new Pizza("Vegeteriana", Size.Large, 249.0);
                     }
                     else
                     { Console.WriteLine("ERROR"); break; }
@@ -50,15 +51,15 @@ class Program
                 {
                     if (choiceMenuPizzasSize == 1)
                     {
-                        Pizza pizza = new Pizza("Stagioni", Size.Small, 119.0);
+                        pizza = new Pizza("Stagioni", Size.Small, 119.0);
                     }
                     else if (choiceMenuPizzasSize == 2)
                     {
-                        Pizza pizza = new Pizza("Stagioni", Size.Medium, 188.0);
+                        pizza = new Pizza("Stagioni", Size.Medium, 188.0);
                     }
                     else if (choiceMenuPizzasSize == 3)
                     {
-                        Pizza pizza = new Pizza("Stagioni", Size.Large, 416.0 );
+                        pizza = new Pizza("Stagioni", Size.Large, 416.0);
                     }
                     else
                     { Console.WriteLine("ERROR"); break; }
@@ -67,15 +68,15 @@ class Program
                 {
                     if (choiceMenuPizzasSize == 1)
                     {
-                        Pizza pizza = new Pizza("Frutti", Size.Small, 300.0);
+                        pizza = new Pizza("Frutti", Size.Small, 300.0);
                     }
                     else if (choiceMenuPizzasSize == 2)
                     {
-                        Pizza pizza = new Pizza("Frutti", Size.Medium, 349.0);
+                        pizza = new Pizza("Frutti", Size.Medium, 349.0);
                     }
                     else if (choiceMenuPizzasSize == 3)
                     {
-                        Pizza pizza = new Pizza("Frutti", Size.Large, 399.0);
+                        pizza = new Pizza("Frutti", Size.Large, 399.0);
                     }
                     else
                     { Console.WriteLine("ERROR"); break; }
@@ -84,15 +85,15 @@ class Program
                 {
                     if (choiceMenuPizzasSize == 1)
                     {
-                        Pizza pizza = new Pizza("Romana", Size.Small, 139.0);
+                        pizza = new Pizza("Romana", Size.Small, 139.0);
                     }
                     else if (choiceMenuPizzasSize == 2)
                     {
-                        Pizza pizza = new Pizza("Romana", Size.Medium, 220.0);
+                        pizza = new Pizza("Romana", Size.Medium, 220.0);
                     }
                     else if (choiceMenuPizzasSize == 3)
                     {
-                        Pizza pizza = new Pizza("Romana", Size.Large, 299.0);
+                        pizza = new Pizza("Romana", Size.Large, 299.0);
                     }
                     else
                     { Console.WriteLine("ERROR"); break; }
@@ -100,7 +101,7 @@ class Program
                 else
                 { Console.WriteLine("ERROR"); break; }
                 Order order = new Order();
-
+                order.AddPizza(pizza);
             }
             else if (choice == 2)
             {
@@ -113,6 +114,7 @@ class Program
         }
     }
 }
+
 
 
 
@@ -571,7 +573,7 @@ namespace GAME
 
         public void AddPizza (Pizza pizza) 
         {
-            this.pizzas[this.pizzas.Count] = pizza;
+            this.pizzas.Add(pizza);
             a++;
         }
 
