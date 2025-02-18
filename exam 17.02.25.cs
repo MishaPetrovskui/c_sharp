@@ -235,6 +235,7 @@ namespace Gofno
             currentTetromino = new Tetromino(shapeColorPair.Item1, area.Width / 2, 0, shapeColorPair.Item2);
             if (!area.CanSpawn(currentTetromino))
             {
+                Console.Clear();
                 Console.WriteLine("Game Over! Your Score: " + Score);
                 Environment.Exit(0);
             }
